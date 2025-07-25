@@ -1,16 +1,11 @@
+import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   server: { port: 5173 },
+  base: './', // Ensures assets work properly in deployed site
   build: {
     outDir: 'dist',
-  },
-  base: './', // 👈 required for relative assets in deployed environment
-  resolve: {
-    alias: {
-      '@': '/src',
-    },
   },
 })
