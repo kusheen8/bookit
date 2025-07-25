@@ -18,7 +18,17 @@ const port = process.env.PORT || 4000
 
 //middlewares
 app.use(express.json())
-app.use(cors())
+
+app.use(cors({
+  origin: [
+    process.env.FRONTEND_URL,
+    process.env.ADMIN_URL,
+    'http://localhost:5173',
+    'http://localhost:5174', // for local dev
+  ],
+  credentials: true
+}));
+
 
 //api end point
 app.use('/api/admin',adminRouter)
